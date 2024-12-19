@@ -1267,6 +1267,14 @@ function showRegistration() {
       <h2>Registro</h2>
       <input type="text" id="username" placeholder="Nome de Usuário">
       <input type="email" id="email" placeholder="Email">
+      <input type="tel" id="phone" placeholder="Telefone">
+      <select id="academicLevel">
+        <option value="">Selecione o Nível Acadêmico</option>
+        <option value="fundamental">Ensino Fundamental</option>
+        <option value="medio">Ensino Médio</option>
+        <option value="superior">Ensino Superior</option>
+        <option value="pos">Pós-Graduação</option>
+      </select>
       <input type="password" id="password" placeholder="Senha">
       <button class="button" onclick="handleRegistration()">Registrar</button>
       <button class="button back-button" onclick="backToLogin()">Voltar</button>
