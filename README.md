@@ -1,7 +1,9 @@
-<html><head><base href="/">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quiz Educacional Moçambicano</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<html>
+  <head>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quiz Educacional Moçambicano</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
 :root {
   --primary-color: #2196F3;
@@ -10,7 +12,7 @@
   --background-color: #f5f5f5;
 }
 
-body {
+  body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-image: url('https://example.com/camilo-background.jpg');
