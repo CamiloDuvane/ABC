@@ -359,32 +359,14 @@ body {
 .answer-content {
   position: relative;
   background: white;
-  width: 80%;
+  width: 90%;
   max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 8px;
-  max-height: 80vh;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 12px;
+  max-height: 85vh;
   overflow-y: auto;
-}
-
-.answers-list {
-  margin: 20px 0;
-}
-
-.answer-item {
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-}
-
-.answer-item.correct {
-  border-left: 4px solid #4caf50;
-}
-
-.answer-item.incorrect {
-  border-left: 4px solid #f44336;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .close-modal {
@@ -409,6 +391,21 @@ body {
   padding-bottom: 8px;
 }
 
+.subject-section {
+  margin-bottom: 30px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.subject-section h4 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary-color);
+}
+
 .answers-list {
   max-height: 70vh;
   overflow-y: auto;
@@ -429,19 +426,6 @@ body {
 
 .answer-item.incorrect {
   border-left: 4px solid #f44336;
-}
-
-.answer-modal .answer-content {
-  position: relative;
-  background: white;
-  width: 90%;
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 25px;
-  border-radius: 12px;
-  max-height: 85vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .admin-panel {
@@ -544,54 +528,6 @@ body {
   padding-left: 20px;
 }
 
-.subject-section {
-  margin-bottom: 30px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.subject-section h4 {
-  color: var(--primary-color);
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--primary-color);
-}
-
-.session-answers {
-  margin: 15px 0;
-  padding: 15px;
-  background: #f5f5f5;
-  border-radius: 8px;
-}
-
-.answers-list {
-  max-height: 400px;
-  overflow-y: auto;
-  padding: 10px;
-}
-
-.answer-item {
-  margin-bottom: 15px;
-  padding: 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  background: white;
-}
-
-.answer-item.correct {
-  border-left: 4px solid #4caf50;
-}
-
-.answer-item.incorrect {
-  border-left: 4px solid #f44336;
-}
-
-.answer-item p {
-  margin: 5px 0;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -621,6 +557,7 @@ body {
       <div class="analytics-card">
         <h3>Quest&#xf5;es Respondidas</h3>
         <div class="time-spent" id="totalQuestions">0</div>
+        <button class="button view-answers-button" onclick="viewAllResults()">Ver Resultados</button>
       </div>
       <div class="analytics-card">
         <h3>Disciplinas Estudadas</h3>
@@ -1008,23 +945,111 @@ function getQuestionsBySubject(subject) {
       correct: 1
     }, {
       question: "Qual das frases contém uma metáfora?",
-      options: ["A vida é um rio.", "O sol está brilhando.", "A cidade é um local movimentado.", "A casa é azul."],
+      options: ["Ele é forte como um leão", "A vida é um palco", "Estava tão feliz que parecia flutuar", "Estava tão quente quanto o deserto"],
+      correct: 1
+    }, {
+      question: "Qual é o sujeito na frase: 'Os alunos estudam para o exame final'?",
+      options: ["Os alunos", "Estudam", "Exame final", "Para o exame"],
       correct: 0
     }, {
-      question: "Qual é o significado da palavra 'não'?",
-      options: ["Sim", "Não", "Talvez", "Nada"],
+      question: "Classifique a oração: 'Quando cheguei, ele já tinha saído.'",
+      options: ["Coordenada", "Subordinada", "Simples", "Nominal"],
       correct: 1
     }, {
-      question: "Identifique o verbo na frase: 'Eu estou estudando.'",
-      options: ["Estou", "Estudando", "Eu", "Estudar"],
+      question: "Identifique o verbo transitivo direto: 'Ela comprou um livro novo.'",
+      options: ["Ela", "Comprou", "Livro", "Novo"],
       correct: 1
     }, {
-      question: "Qual é a forma correta de escrever a palavra 'ácido'?",
-      options: ["Acido", "Acído", "Ácido", "Acidô"],
+      question: "Qual é o tempo verbal de 'Nós estudaremos juntos amanhã'?",
+      options: ["Presente", "Passado", "Futuro do Presente", "Futuro do Pretérito"],
       correct: 2
     }, {
-      question: "Qual é o significado da expressão 'tomar um banho'?",
-      options: ["Lavar-se", "Comer", "Dormir", "Estudar"],
+      question: "O que é uma interjeição?",
+      options: ["Palavra que expressa emoção ou sentimento", "Palavra que liga orações", "Palavra que determina o verbo", "Palavra que indica lugar"],
+      correct: 0
+    }],
+    historia: [{
+      question: "Quem foi o primeiro presidente de Moçambique independente?",
+      options: ["Joaquim Chissano", "Samora Machel", "Eduardo Mondlane", "Filipe Nyusi"],
+      correct: 1
+    }, {
+      question: "Em que ano Moçambique conquistou sua independência?",
+      options: ["1974", "1975", "1977", "1980"],
+      correct: 1
+    }, {
+      question: "Qual foi o principal movimento de libertação nacional em Moçambique?",
+      options: ["RENAMO", "FRELIMO", "MPLA", "PAIGC"],
+      correct: 1
+    }, {
+      question: "Quem foi o fundador da FRELIMO?",
+      options: ["Filipe Nyusi", "Eduardo Mondlane", "Samora Machel", "Joaquim Chissano"],
+      correct: 1
+    }, {
+      question: "Qual é a data da assinatura do Acordo Geral de Paz?",
+      options: ["4 de outubro de 1992", "7 de setembro de 1974", "25 de junho de 1975", "1 de dezembro de 1990"],
+      correct: 0
+    }],
+    quimica: [{
+      question: "Qual é o símbolo químico do oxigênio?",
+      options: ["O", "Ox", "O₂", "O³"],
+      correct: 0
+    }, {
+      question: "Qual é o número atômico do carbono?",
+      options: ["6", "8", "12", "14"],
+      correct: 0
+    }, {
+      question: "Qual é a fórmula química da água?",
+      options: ["H₂O", "O₂H", "H₂O₂", "OH₂"],
+      correct: 0
+    }, {
+      question: "Como se chama a reação em que uma substância ganha oxigênio?",
+      options: ["Redução", "Oxidação", "Combustão", "Neutralização"],
+      correct: 1
+    }, {
+      question: "Qual é o nome do processo de separação de misturas pelo calor?",
+      options: ["Filtração", "Destilação", "Decantação", "Sublimação"],
+      correct: 1
+    }],
+    biologia: [{
+      question: "Qual é a unidade básica da vida?",
+      options: ["Célula", "Tecidos", "Órgãos", "Organismos"],
+      correct: 0
+    }, {
+      question: "Qual molécula é responsável pelo transporte de oxigênio no sangue?",
+      options: ["Hemoglobina", "Glucose", "Insulina", "Lipídios"],
+      correct: 0
+    }, {
+      question: "Qual grupo de organismos é responsável pela decomposição de matéria orgânica?",
+      options: ["Fungos e bactérias", "Plantas", "Insetos", "Mamíferos"],
+      correct: 0
+    }, {
+      question: "Qual é o tipo de reprodução em que apenas um organismo é necessário?",
+      options: ["Sexuada", "Assexuada", "Alternada", "Dividida"],
+      correct: 1
+    }, {
+      question: "Qual é o tipo de sangue considerado doador universal?",
+      options: ["A", "B", "AB", "O negativo"],
+      correct: 3
+    }],
+    fisica: [{
+      question: "Qual é a unidade de força no Sistema Internacional?",
+      options: ["Newton", "Joule", "Watt", "Pascal"],
+      correct: 0
+    }, {
+      question: "Qual é a aceleração da gravidade na Terra?",
+      options: ["9,8 m/s²", "10 m/s²", "9,8 km/s²", "8,9 m/s²"],
+      correct: 0
+    }, {
+      question: "Qual é a unidade de potência no Sistema Internacional?",
+      options: ["Watt", "Joule", "Newton", "Pascal"],
+      correct: 0
+    }, {
+      question: "O que é energia cinética?",
+      options: ["Energia de um corpo em movimento", "Energia armazenada", "Energia térmica", "Energia elétrica"],
+      correct: 0
+    }, {
+      question: "Qual é a fórmula de Ohm?",
+      options: ["V = IR", "F = ma", "E = mc²", "P = VI"],
       correct: 0
     }]
   };
@@ -1404,7 +1429,7 @@ function submitAnswer() {
     correctAnswer: currentQuestionObj.options[currentQuestionObj.correct],
     isCorrect: isCorrect
   };
-  const sessionId = new Date().getTime().toString();
+  const sessionId = crypto.randomUUID();
   const answersKey = `answers_${sessionId}`;
   const previousAnswers = JSON.parse(sessionStorage.getItem(answersKey)) || [];
   previousAnswers.push(answerData);
@@ -1477,6 +1502,68 @@ function deleteUser(index) {
     localStorage.setItem('approvedUsers', JSON.stringify(approvedUsers));
     showStudentList();
   }
+}
+function viewAllResults() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if (!currentUser || !currentUser.activityHistory) {
+    alert('Nenhum resultado disponível');
+    return;
+  }
+  const modal = document.createElement('div');
+  modal.className = 'answer-modal';
+  modal.innerHTML = `
+    <div class="answer-content">
+      <span class="close-modal">&times;</span>
+      <h3>Todos os Resultados</h3>
+      <div class="answers-list"></div>
+    </div>
+  `;
+  const answersList = modal.querySelector('.answers-list');
+  const groupedBySubject = currentUser.activityHistory.reduce((acc, activity) => {
+    if (!acc[activity.subject]) {
+      acc[activity.subject] = [];
+    }
+    acc[activity.subject].push(activity);
+    return acc;
+  }, {});
+  Object.entries(groupedBySubject).forEach(([subject, activities]) => {
+    const subjectDiv = document.createElement('div');
+    subjectDiv.className = 'subject-section';
+    subjectDiv.innerHTML = `<h4>Disciplina: ${subject}</h4>`;
+    activities.forEach(activity => {
+      const sessionDiv = document.createElement('div');
+      sessionDiv.className = 'session-answers';
+      const date = new Date(activity.date).toLocaleDateString();
+      const time = new Date(activity.date).toLocaleTimeString();
+      sessionDiv.innerHTML = `
+        <h4>Sessão - ${date} ${time}</h4>
+        <p>Pontuação: ${activity.score}%</p>
+        <p>Questões Respondidas: ${activity.questionsAnswered}</p>
+      `;
+      const answers = JSON.parse(sessionStorage.getItem(`answers_${activity.id}`)) || [];
+      if (answers.length > 0) {
+        answers.forEach((answer, index) => {
+          const answerItem = document.createElement('div');
+          answerItem.className = `answer-item ${answer.isCorrect ? 'correct' : 'incorrect'}`;
+          answerItem.innerHTML = `
+            <p><strong>Pergunta ${index + 1}:</strong> ${answer.question}</p>
+            <p><strong>Sua resposta:</strong> ${answer.selectedAnswer}</p>
+            <p><strong>Resposta correta:</strong> ${answer.correctAnswer}</p>
+          `;
+          sessionDiv.appendChild(answerItem);
+        });
+      }
+      subjectDiv.appendChild(sessionDiv);
+    });
+    answersList.appendChild(subjectDiv);
+  });
+  document.body.appendChild(modal);
+  modal.style.display = 'block';
+  const closeBtn = modal.querySelector('.close-modal');
+  closeBtn.onclick = () => modal.remove();
+  modal.onclick = e => {
+    if (e.target === modal) modal.remove();
+  };
 }</script>
 </body>
 </html>
